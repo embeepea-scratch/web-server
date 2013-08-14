@@ -143,9 +143,10 @@ class { 'mysql::server':
 
 class { 'mysql::php': }
 
-#exec { 'secure-mysql-server' :
-#    command => '/usr/bin/mysql --user=root --password=$mysql_root_password mysql < /etc/puppet/files/assets/mysql/secure.sql'
-#}
+exec { 'secure-mysql-server' :
+    require => Class["mysql::server"],
+    command => '/usr/bin/mysql --defaults-extra-file=/root/.my.cnf --force mysql < /etc/puppet/files/assets/mysql/secure.sql'
+}
 
 
 ########################################################################

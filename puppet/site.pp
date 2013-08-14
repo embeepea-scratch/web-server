@@ -135,7 +135,7 @@ Include /var/vsites/conf/*.conf
 class { "git-server" : }
 class { "apache-vsites-server" : }
 
-import 'assets/mysql/password'
+import 'assets/mysql/password.pp'
 
 class { 'mysql::server':
   config_hash => { 'root_password' => $mysql_root_password }

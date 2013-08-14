@@ -135,6 +135,17 @@ Include /var/vsites/conf/*.conf
 class { "git-server" : }
 class { "apache-vsites-server" : }
 
+import 'assets/mysql/password'
+
+class { 'mysql::server':
+  config_hash => { 'root_password' => $mysql_root_password }
+}
+
+class { 'mysql::php': }
+
+#exec { 'secure-mysql-server' :
+#    command => '/usr/bin/mysql --user=root --password=$mysql_root_password mysql < /etc/puppet/files/assets/mysql/secure.sql'
+#}
 
 
 ########################################################################

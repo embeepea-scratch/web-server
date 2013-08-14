@@ -2,4 +2,4 @@
 
 # puppet-apply
 
-puppet apply --modulepath=./puppet/modules --fileserverconfig=/vagrant/puppet/fileserver.conf puppet/site.pp
+puppet apply --modulepath=./puppet/modules:/etc/puppet/modules --fileserverconfig=/vagrant/puppet/fileserver.conf puppet/site.pp

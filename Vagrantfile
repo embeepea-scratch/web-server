@@ -47,6 +47,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision :shell, :inline => <<-HEREDOC
     rpm -Uvh http://yum.puppetlabs.com/el/6/products/i386/puppetlabs-release-6-7.noarch.rpm
     yum -y install puppet
+    puppet module install puppetlabs/stdlib
     rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
     exit 0
   HEREDOC

@@ -1,6 +1,11 @@
 exec { disable_selinux_sysconfig:
     command => '/bin/sed -i "s@^\(SELINUX=\).*@\1disabled@" /etc/selinux/config',
-    unless => '/bin/grep -q "SELINUX=disabled" /etc/selinux/config',
+    unless  => '/bin/grep -q "SELINUX=disabled" /etc/selinux/config',
+}
+
+exec { 'set-hostname':
+    command => '/bin/sed -i "s/HOSTNAME=.*/HOSTNAME=cloud1/" /etc/sysconfig/network',
+    unless  => '/bin/grep -q "HOSTNAME=cloud1" /etc/sysconfig/network',
 }
 
 package { 'emacs-nox':

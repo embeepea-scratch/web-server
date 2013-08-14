@@ -25,6 +25,7 @@ Vagrant.configure("2") do |config|
     aws.secret_access_key         = aws_config["secret_access_key"]
     aws.keypair_name              = aws_config["keypair_name"]
     aws.security_groups           = aws_config["security_groups"]
+    aws.tags                      = { 'name' => 'cloud1' }
 
     aws.ami                       = "ami-4690ea2f"
     # This is a custom AMI which I created by doing the following:
